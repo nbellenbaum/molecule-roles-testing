@@ -1,0 +1,24 @@
+---
+scenario:
+  name: fedora
+  test_sequence:
+    - destroy
+    - syntax
+    - create
+    - converge
+    - verify
+    - destroy
+dependency:
+  name: galaxy
+driver:
+  name: podman
+platforms:
+  - name: web1
+    groups:
+      - webs
+    image: docker.io/library/fedora:latest
+    pre_build_image: true
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
